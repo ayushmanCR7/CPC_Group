@@ -28,3 +28,29 @@ function initgame(){
    gameinfo.innerText=`Current Player-${currentplayer}`;
 }
 initgame();
+function handleclick(index){
+    if(gamegrid[index]===""){
+        boxes[index].innerText=currentplayer;
+        gamegrid[index]=currentplayer;
+        boxes[index].style.pointerEvents="none";
+        // swap karo turn karo
+        swapturn();
+        // check koi jeet toh nahi gaya
+        checkgameover();
+    }
+ }
+ function swapturn(){
+    if(currentplayer==="X"){
+        currentplayer="O";
+    }
+    else{
+        currentplayer="X";
+    }
+    // ui update
+    gameinfo.innerText=`Current Player - ${currentplayer}`;
+ }
+boxes.forEach((box,index)=>{
+    box.addEventListener("click",()=>{
+        handleclick(index);
+    })
+ });
