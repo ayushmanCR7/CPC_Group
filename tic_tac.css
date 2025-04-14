@@ -1,0 +1,23 @@
+.game-info{
+    color: white;
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:rgba(255,255,255,0.15);
+    border-radius: 1rem;
+    border: 1px solidrgba(255,255,255,0.25);
+    padding: 0.5rem 3rem;
+    text-align: center;
+ }
+ .tic-tac-toe{
+    width: 90%;
+    max-width: 20rem;
+    border-radius: 1rem;
+    background-color:rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: repeat(3,1fr);
+    aspect-ratio: 1/1;
+ }
