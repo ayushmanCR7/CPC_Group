@@ -54,3 +54,43 @@ boxes.forEach((box,index)=>{
         handleclick(index);
     })
  });
+
+ function checkgameover(){
+    let answer="";
+    winningposition.forEach((position)=>{
+        if((gamegrid[position[0]]!=="" ||  gamegrid[position[1]]!=="" || gamegrid[position[2]]!=="" ) &&
+            (gamegrid[position[0]]===gamegrid[position[1]]) && 
+(gamegrid[position[1]]===gamegrid[position[2]])){
+                if(gamegrid[position[0]]==="X"){
+                    answer="X";
+                }
+                else{
+                    answer="O";
+                }
+                // disable pointer event
+                boxes.forEach((box)=>{
+                    box.style.pointerEvents="none";
+                })
+                boxes[position[0]].classList.add("win");
+                boxes[position[1]].classList.add("win");
+                boxes[position[2]].classList.add("win");
+            }
+    });
+    if(answer!==""){
+        gameinfo.innerText=`Winner Player - ${answer}`;
+        newgamebtn.classList.add("active");
+        return;
+    }
+    // checking tied match
+    let fillcount=0;
+    gamegrid.forEach((box)=>{
+        if(box !==""){
+            fillcount++;
+        }
+    });
+    if(fillcount===9){
+        gameinfo.innerText="Game Tied!"
+        newgamebtn.classList.add("active");
+    }
+ }
+ newgamebtn.addEventListener("click", initgame);
